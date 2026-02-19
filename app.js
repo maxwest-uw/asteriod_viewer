@@ -11,7 +11,7 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
 
 // TODO: set this up to handle different camera locations (aka observation from Earth)
-camera.position.y = 4;
+camera.position.y = -4;
 
 camera.lookAt(0, 0, 0);
 
@@ -58,7 +58,7 @@ var render = function () {
   cameraLight.position.x = Math.cos(time * speed) * radius;
   cameraLight.position.y = Math.sin(time * speed) * radius;
 
-  mesh.rotation.z -= 0.01;
+  mesh.rotation.z += 0.01;
 
   // Render the scene
   renderer.render(scene, camera);
