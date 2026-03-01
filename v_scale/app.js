@@ -1,7 +1,5 @@
 import * as THREE from 'three';
-import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
 import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
-
 
 // ------------------------------------------------
 // BASIC SETUP
@@ -56,29 +54,6 @@ console.log("Object location:", obj_loc);
 // FUN STARTS HERE
 // ------------------------------------------------
 
-// if (obj_loc != "") {
-//     const mesh = await new OBJLoader().loadAsync(obj_loc);
-//     mesh.position.set(0, 0, 0);
-//     scene.add(mesh);
-// } else {
-//     const ellipsoidGeometry = new THREE.SphereGeometry(1.5, 32, 16);
-
-//     const b_a = parseFloat(document.getElementById('b_a').value);
-//     const c_a = parseFloat(document.getElementById('c_a').value);
-//     ellipsoidGeometry.scale(1, b_a, c_a);
-
-//     var material = new THREE.MeshPhongMaterial( { color: "#FFFFFF" } );
-//     const ellipsoidMesh = new THREE.Mesh(ellipsoidGeometry, material);
-
-//     scene.add( ellipsoidMesh );
-
-// }
-
-// const axesHelper = new THREE.AxesHelper(5); // 5 is the length of the axes
-// scene.add(axesHelper);
-
-// renderer.render(scene, camera);
-
 let maxRadius = 0;
 let objectMesh;
 
@@ -109,6 +84,7 @@ camera.lookAt(0, 0, 0);
 const axesHelper = new THREE.AxesHelper(maxRadius);
 scene.add(axesHelper);
 
-camera.rotation.x = pn * Math.PI / 180;
+// Apply North Pole Angle (0-360 from North to East)
+camera.rotation.x = (Math.PI/2) - pn * Math.PI / 180;
 
 renderer.render(scene, camera);
